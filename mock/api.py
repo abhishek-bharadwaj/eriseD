@@ -30,18 +30,9 @@ class MockResource(ModelResource):
     def get_data(self, request, **kwargs):
         self.method_check(request, ['get'])
         searched_url = request.GET['url'].strip()
-        return views.render_data(request, public.get_json_data_for_url(searched_url) or {})
+        return self.create_response(public.get_json_data_for_url(searched_url) or {})
 
     def create_mock(self, request, **kwargs):
-        return views.post_new(request)
-        # if request.method == "POST":
-        #     form = forms.AddressForm(request.POST)
-        #     if form.is_valid():
-        #         post = form.save(commit=False)
-        #         post.author = request.user
-        #         post.published_date = timezone.now()
-        #         post.save()
-        #         return self.create_response(request, {'message': 'Mock created successfully..'})
-        # else:
-        #     form = forms.AddressForm()
-        # return render(request, 'blog/post_edit.html', {'form': form})
+        views.render_create_mock_view(request)
+        return views.render_create_mock_view(request)
+
