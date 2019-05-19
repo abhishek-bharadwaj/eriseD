@@ -1,12 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.template import loader
 
 from mock import public
 
 
-def get_data(request, url):
-    store_obj = public.get_json_data_for_url(url)
-    if store_obj:
-        return HttpResponse(store_obj)
-    else:
-        return HttpResponse("The json equivalent to {} doesn't exist.".format(url))
+def render_data(request, url):
+    return_response_template = loader.get_template('return_response.html')
+    context = {
+
+    }
+    return HttpResponse(return_response_template.render(context, request))

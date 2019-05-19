@@ -5,6 +5,7 @@ from tastypie.utils.urls import trailing_slash
 
 from mock.models import Store
 from mock import public
+from mock import views
 
 
 class MockResource(ModelResource):
@@ -23,4 +24,4 @@ class MockResource(ModelResource):
     def get_data(self, request, **kwargs):
         self.method_check(request, ['get'])
         searched_url = request.GET['url'].strip()
-        return self.create_response(request, public.get_json_data_for_url(searched_url) or {})
+        return views.render_data(request, public.get_json_data_for_url(searched_url) or {})
