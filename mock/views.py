@@ -14,5 +14,5 @@ def render_data(request, return_data):
 
 
 def post_new(request):
-    form = forms.AddressForm()
+    form = forms.StoreForm()
     return render(request, 'store_mocks.html', {'form': form})
