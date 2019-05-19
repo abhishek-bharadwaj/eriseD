@@ -16,7 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from mock.resources import MockResource
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('mock', include('mock.urls'))
+    path('mock/', include(MockResource().urls))
 ]
