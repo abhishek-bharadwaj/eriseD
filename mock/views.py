@@ -8,7 +8,7 @@ def render_create_mock_view(request):
         form = forms.StoreForm(request.POST)
         if form.is_valid():
             form.save()
-            return
+            return render(request, 'mock_creation_success.html')
 
     form = forms.StoreForm
     return render(request, 'store_mocks.html', {'form': form})

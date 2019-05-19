@@ -32,7 +32,7 @@ class MockResource(ModelResource):
         searched_url = request.GET['url'].strip()
         return self.create_response(public.get_json_data_for_url(searched_url) or {})
 
-    def create_mock(self, request, **kwargs):
-        views.render_create_mock_view(request)
+    @staticmethod
+    def create_mock(request, **kwargs):
         return views.render_create_mock_view(request)
 
