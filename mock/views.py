@@ -1,13 +1,14 @@
-from django.http import HttpResponse
 from django.shortcuts import render
-from django.template import loader
 
-from mock import public
+from . import forms
 
 
-def render_data(request, url):
-    return_response_template = loader.get_template('return_response.html')
-    context = {
+def render_create_mock_view(request):
+    if request.method == 'POST':
+        form = forms.StoreForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'mock_creation_success.html')
 
-    }
-    return HttpResponse(return_response_template.render(context, request))
+    form = forms.StoreForm
+    return render(request, 'store_mocks.html', {'form': form})
