@@ -13,7 +13,7 @@ class Store(BaseModel):
 
     def to_json(self):
         return {
-            'username': self.user.username,
+            'username': self.user.username or '',
             'url': self.url,
             'data': self.data,
             'response_delay': self.response_delay
