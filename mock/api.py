@@ -1,5 +1,4 @@
 from django.conf.urls import url
-from django.utils import timezone
 
 from tastypie.resources import ModelResource
 from tastypie.utils.urls import trailing_slash
@@ -7,8 +6,6 @@ from tastypie.utils.urls import trailing_slash
 from mock.models import Store
 from mock import public
 from mock import views
-
-from . import forms
 
 
 class MockResource(ModelResource):

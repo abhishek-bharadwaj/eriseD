@@ -6,4 +6,4 @@ from mock.models import Store
 class StoreForm(forms.ModelForm):
     class Meta:
         model = Store
-        fields = ['url', 'data', 'response_delay']
+        fields = ['data', 'response_delay']
